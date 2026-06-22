@@ -1,0 +1,113 @@
+"use client";
+
+import { useRef, useState, useCallback, useEffect } from "react";
+import { motion } from "framer-motion";
+import { MoveHorizontal } from "lucide-react";
+
+export function BeforeAfter() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState(50);
+  const [width, setWidth] = useState(0);
+  const dragging = useRef(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => setWidth(el.offsetWidth));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  const setFromClientX = useCallback((clientX: number) => {
+    const el = containerRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const pct = ((clientX - rect.left) / rect.width) * 100;
+    setPos(Math.max(2, Math.min(98, pct)));
+  }, []);
+
+  useEffect(() => {
+    const move = (e: PointerEvent) => {
+      if (dragging.current) setFromClientX(e.clientX);
+    };
+    const up = () => (dragging.current = false);
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerup", up);
+    return () => {
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", up);
+    };
+  }, [setFromClientX]);
+
+  return (
+    <section id="realizace" className="relative py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="mb-12 grid gap-6 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <p className="mb-3 text-xs uppercase tracking-[0.2em] text-heat">
+              Před a po
+            </p>
+            <h2 className="font-display text-3xl font-bold tracking-tight text-white md:text-5xl">
+              Z rezavých trubek čisté lisované spoje
+            </h2>
+          </div>
+          <p className="text-slate-400 lg:col-span-4">
+            Přetáhněte posuvník a porovnejte stav před rekonstrukcí a po předání
+            díla. Reálný rozdíl, který poznáte i za zdí.
+          </p>
+        </div>
+
+        <div
+          ref={containerRef}
+          className="relative aspect-[16/10] w-full select-none overflow-hidden rounded-xl2 border border-edge md:aspect-[16/8]"
+          onPointerDown={(e) => {
+            dragging.current = true;
+            setFromClientX(e.clientX);
+          }}
+        >
+          {/* AFTER (full, underneath) */}
+          <img
+            src="https://picsum.photos/seed/new-copper-press-pipework-clean/1600/900"
+            alt="Nové měděné lisované rozvody po rekonstrukci"
+            className="absolute inset-0 h-full w-full object-cover"
+            draggable={false}
+          />
+          <div className="pointer-events-none absolute right-4 top-4 rounded-full border border-water/40 bg-base/70 px-3 py-1 text-xs text-water backdrop-blur-md">
+            Po
+          </div>
+
+          {/* BEFORE (clipped) */}
+          <div
+            className="absolute inset-0 h-full overflow-hidden"
+            style={{ width: `${pos}%` }}
+          >
+            <img
+              src="https://picsum.photos/seed/old-rusty-corroded-pipes/1600/900"
+              alt="Staré zkorodované potrubí před rekonstrukcí"
+              className="absolute inset-0 h-full max-w-none object-cover"
+              style={{ width: width || "100%" }}
+              draggable={false}
+            />
+            <div className="absolute inset-0 bg-base/30 mix-blend-multiply" />
+            <div className="pointer-events-none absolute left-4 top-4 rounded-full border border-heat/40 bg-base/70 px-3 py-1 text-xs text-heat backdrop-blur-md">
+              Před
+            </div>
+          </div>
+
+          {/* Handle */}
+          <div
+            className="absolute inset-y-0 z-10 w-0.5 bg-white/80"
+            style={{ left: `${pos}%` }}
+          >
+            <motion.div
+              whileTap={{ scale: 0.92 }}
+              className="absolute left-1/2 top-1/2 grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize place-items-center rounded-full border border-white/30 bg-base/80 text-white shadow-glow-water backdrop-blur-md"
+            >
+              <MoveHorizontal className="h-5 w-5" />
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
