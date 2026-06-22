@@ -48,12 +48,12 @@ export function BeforeAfter() {
               Před a po
             </p>
             <h2 className="font-display text-3xl font-bold tracking-tight text-white md:text-5xl">
-              Z rezavých trubek čisté lisované spoje
+              Z degradovaného potrubí čistá nová instalace
             </h2>
           </div>
           <p className="text-slate-400 lg:col-span-4">
-            Přetáhněte posuvník a porovnejte stav před rekonstrukcí a po předání
-            díla. Reálný rozdíl, který poznáte i za zdí.
+            Přetáhněte posuvník a porovnejte stav, který přebírám, s výsledkem,
+            který předávám. Skutečné fotky z mých zakázek.
           </p>
         </div>
 
@@ -67,8 +67,8 @@ export function BeforeAfter() {
         >
           {/* AFTER (full, underneath) */}
           <img
-            src="https://picsum.photos/seed/new-copper-press-pipework-clean/1600/900"
-            alt="Nové měděné lisované rozvody po rekonstrukci"
+            src="/realizace/bojler-3.jpeg"
+            alt="Po: čistá nová instalace s novou pákovou baterií"
             className="absolute inset-0 h-full w-full object-cover"
             draggable={false}
           />
@@ -82,8 +82,8 @@ export function BeforeAfter() {
             style={{ width: `${pos}%` }}
           >
             <img
-              src="https://picsum.photos/seed/old-rusty-corroded-pipes/1600/900"
-              alt="Staré zkorodované potrubí před rekonstrukcí"
+              src="/realizace/nemocnice-1.jpeg"
+              alt="Před: zkorodované a degradované potrubí"
               className="absolute inset-0 h-full max-w-none object-cover"
               style={{ width: width || "100%" }}
               draggable={false}

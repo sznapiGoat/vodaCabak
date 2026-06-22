@@ -105,8 +105,8 @@ export function Hero() {
         >
           <div className="relative overflow-hidden rounded-xl2 border border-edge shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)]">
             <img
-              src="https://picsum.photos/seed/copper-pipes-heating-system/900/1100"
-              alt="Měděné rozvody topení a vodoinstalace"
+              src="/realizace/nemocnice-1.jpeg"
+              alt="Reálná zakázka: výměna degradovaného potrubí ve Vsetínské nemocnici"
               className="h-[420px] w-full object-cover md:h-[560px]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-base via-base/20 to-transparent" />

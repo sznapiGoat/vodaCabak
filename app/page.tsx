@@ -2,6 +2,7 @@ import { Navbar } from "@/components/site/navbar";
 import { Hero } from "@/components/site/hero";
 import { Services } from "@/components/site/services";
 import { BeforeAfter } from "@/components/site/before-after";
+import { Gallery } from "@/components/site/gallery";
 import { Process } from "@/components/site/process";
 import { Configurator } from "@/components/site/configurator";
 import { Contact } from "@/components/site/contact";
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <Services />
       <BeforeAfter />
+      <Gallery />
       <Process />
       <Configurator />
       <Contact />

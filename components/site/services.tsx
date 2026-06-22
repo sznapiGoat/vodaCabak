@@ -26,7 +26,7 @@ interface Service {
   points: string[];
   accent: Accent;
   span: string;
-  seed: string;
+  image: string;
 }
 
 const SERVICES: Service[] = [
@@ -37,7 +37,7 @@ const SERVICES: Service[] = [
     points: ["Rozvody vody", "Odpady a kanalizace", "Výměna baterií a ventilů"],
     accent: "water",
     span: "lg:col-span-3 lg:row-span-2",
-    seed: "water-pipes-press-fitting-copper",
+    image: "/realizace/nemocnice-1.jpeg",
   },
   {
     icon: Flame,
@@ -46,7 +46,7 @@ const SERVICES: Service[] = [
     points: ["Podlahové topení", "Radiátory", "Napojení kotlů"],
     accent: "heat",
     span: "lg:col-span-3",
-    seed: "underfloor-heating-manifold-orange",
+    image: "/realizace/nemocnice-3.jpeg",
   },
   {
     icon: Bath,
@@ -55,7 +55,7 @@ const SERVICES: Service[] = [
     points: ["Sprchové kouty", "Obklady a dlažba"],
     accent: "water",
     span: "lg:col-span-2",
-    seed: "modern-bathroom-renovation-tiles",
+    image: "/realizace/bojler-2.jpeg",
   },
   {
     icon: Wrench,
@@ -64,7 +64,7 @@ const SERVICES: Service[] = [
     points: ["Úniky vody", "Odvzdušnění"],
     accent: "heat",
     span: "lg:col-span-1",
-    seed: "plumber-tools-repair-dark",
+    image: "/realizace/vodarna-2.jpeg",
   },
 ];
 
@@ -117,10 +117,10 @@ function TiltCard({ service }: { service: Service }) {
       {/* Accent-aware background image bleed */}
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
         <img
-          src={`https://picsum.photos/seed/${service.seed}/700/500`}
+          src={service.image}
           alt=""
           aria-hidden
-          className="h-full w-full object-cover opacity-20"
+          className="h-full w-full object-cover opacity-25"
         />
         <div
           className={cn(

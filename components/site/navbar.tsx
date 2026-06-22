@@ -8,8 +8,9 @@ import { cn } from "@/lib/utils";
 
 const LINKS = [
   { href: "#sluzby", label: "Služby" },
-  { href: "#realizace", label: "Realizace" },
-  { href: "#postup", label: "Jak to probíhá" },
+  { href: "#realizace", label: "Před a po" },
+  { href: "#galerie", label: "Realizace" },
+  { href: "#postup", label: "Postup" },
   { href: "#poptavka", label: "Poptávka" },
   { href: "#kontakt", label: "Kontakt" },
 ];
