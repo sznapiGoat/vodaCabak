@@ -15,7 +15,7 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-500">
-              Vodoinstalatérské a topenářské práce ve Vsetíně a okolí. Marek
+              Vodoinstalatérské a topenářské práce ve Vsetíně a okolí. Štěpán
               Čabák. Čistá práce, jasná cena.
             </p>
           </div>

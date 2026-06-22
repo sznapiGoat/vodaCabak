@@ -4,6 +4,18 @@ import { useRef, useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { MoveHorizontal } from "lucide-react";
 
+// TODO: swap these for a REAL matched pair — the SAME spot photographed
+// before and after the work. Until then these are illustrative shots from
+// two different jobs, so the slider shows contrast, not one transformation.
+const BEFORE = {
+  src: "/realizace/nemocnice-1.jpeg",
+  alt: "Před: zkorodované a degradované potrubí",
+};
+const AFTER = {
+  src: "/realizace/bojler-3.jpeg",
+  alt: "Po: čistá nová instalace s novou pákovou baterií",
+};
+
 export function BeforeAfter() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState(50);
@@ -53,7 +65,7 @@ export function BeforeAfter() {
           </div>
           <p className="text-slate-400 lg:col-span-4">
             Přetáhněte posuvník a porovnejte stav, který přebírám, s výsledkem,
-            který předávám. Skutečné fotky z mých zakázek.
+            který předávám. Ilustrační fotky ze dvou různých zakázek.
           </p>
         </div>
 
@@ -67,8 +79,8 @@ export function BeforeAfter() {
         >
           {/* AFTER (full, underneath) */}
           <img
-            src="/realizace/bojler-3.jpeg"
-            alt="Po: čistá nová instalace s novou pákovou baterií"
+            src={AFTER.src}
+            alt={AFTER.alt}
             className="absolute inset-0 h-full w-full object-cover"
             draggable={false}
           />
@@ -82,8 +94,8 @@ export function BeforeAfter() {
             style={{ width: `${pos}%` }}
           >
             <img
-              src="/realizace/nemocnice-1.jpeg"
-              alt="Před: zkorodované a degradované potrubí"
+              src={BEFORE.src}
+              alt={BEFORE.alt}
               className="absolute inset-0 h-full max-w-none object-cover"
               style={{ width: width || "100%" }}
               draggable={false}

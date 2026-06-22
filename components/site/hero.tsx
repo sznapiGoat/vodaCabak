@@ -57,7 +57,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
             className="mt-5 max-w-xl text-base leading-relaxed text-slate-400 md:text-lg"
           >
-            Marek Čabák. Vodoinstalatérské a topenářské práce s precizními
+            Štěpán Čabák. Vodoinstalatérské a topenářské práce s precizními
             lisovanými spoji. Čistá práce, jasná cena, termín, který platí.
           </motion.p>
 

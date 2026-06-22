@@ -17,18 +17,18 @@ const sans = Inter({
 export const metadata: Metadata = {
   title: "Vodo-Topo Čabák | Vodoinstalatér a topenář Vsetín",
   description:
-    "Marek Čabák, vodoinstalatérské a topenářské práce ve Vsetíně a okolí. Rozvody vody, topení, rekonstrukce koupelen, lisované spoje. Spolehlivě a precizně.",
+    "Štěpán Čabák, vodoinstalatérské a topenářské práce ve Vsetíně a okolí. Rozvody vody, topení, rekonstrukce koupelen, lisované spoje. Spolehlivě a precizně.",
   keywords: [
     "vodoinstalatér Vsetín",
     "topenář Vsetín",
     "rekonstrukce koupelny",
     "rozvody topení",
-    "Marek Čabák",
+    "Štěpán Čabák",
   ],
   openGraph: {
     title: "Vodo-Topo Čabák | Voda a topení Vsetín",
     description:
-      "Vodoinstalatérské a topenářské práce ve Vsetíně a okolí. Marek Čabák.",
+      "Vodoinstalatérské a topenářské práce ve Vsetíně a okolí. Štěpán Čabák.",
     type: "website",
     locale: "cs_CZ",
   },

@@ -71,7 +71,7 @@ const PROJECTS: Project[] = [
       { src: "/realizace/bojler-3.jpeg", caption: "Nová páková baterie" },
       {
         src: "/realizace/vodarna-1.jpeg",
-        caption: "Marek při výměně domácí vodárny",
+        caption: "Štěpán při výměně domácí vodárny",
       },
     ],
   },
