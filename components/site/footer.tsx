@@ -56,7 +56,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-edge pt-6 text-xs text-slate-600 sm:flex-row">
           <p>© {new Date().getFullYear()} Vodo-Topo Čabák · Vsetín</p>
-          <p>Voda v cyan, topení v oranžové.</p>
+          <p>Lisované spoje · tlakové zkoušky · záruka na práci</p>
         </div>
       </div>
     </footer>

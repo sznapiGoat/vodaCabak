@@ -71,7 +71,7 @@ export function BeforeAfter() {
 
         <div
           ref={containerRef}
-          className="relative aspect-[16/10] w-full select-none overflow-hidden rounded-xl2 border border-edge md:aspect-[16/8]"
+          className="relative aspect-[16/10] w-full touch-none select-none overflow-hidden rounded-xl2 border border-edge md:aspect-[16/8]"
           onPointerDown={(e) => {
             dragging.current = true;
             setFromClientX(e.clientX);
@@ -106,17 +106,32 @@ export function BeforeAfter() {
             </div>
           </div>
 
-          {/* Handle */}
+          {/* Handle — focusable slider, arrow keys move it */}
           <div
             className="absolute inset-y-0 z-10 w-0.5 bg-white/80"
             style={{ left: `${pos}%` }}
           >
-            <motion.div
+            <motion.button
+              type="button"
+              role="slider"
+              aria-label="Porovnání před a po"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={Math.round(pos)}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                  setPos((p) => Math.max(2, p - 4));
+                } else if (e.key === "ArrowRight" || e.key === "ArrowUp") {
+                  e.preventDefault();
+                  setPos((p) => Math.min(98, p + 4));
+                }
+              }}
               whileTap={{ scale: 0.92 }}
-              className="absolute left-1/2 top-1/2 grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize place-items-center rounded-full border border-white/30 bg-base/80 text-white shadow-glow-water backdrop-blur-md"
+              className="absolute left-1/2 top-1/2 grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize place-items-center rounded-full border border-white/30 bg-base/80 text-white shadow-glow-water backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-water/60"
             >
               <MoveHorizontal className="h-5 w-5" />
-            </motion.div>
+            </motion.button>
           </div>
         </div>
       </div>

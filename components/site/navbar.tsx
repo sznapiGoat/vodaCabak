@@ -71,18 +71,30 @@ export function Navbar() {
           </Button>
         </div>
 
-        <button
-          aria-label="Menu"
-          onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-lg border border-edge text-slate-200 lg:hidden"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href="tel:+420731200845"
+            aria-label="Zavolat +420 731 200 845"
+            className="grid h-10 w-10 place-items-center rounded-lg bg-water text-zinc-950 shadow-glow-water"
+          >
+            <Phone className="h-[18px] w-[18px]" strokeWidth={2} />
+          </a>
+          <button
+            aria-label="Menu"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-10 w-10 place-items-center rounded-lg border border-edge text-slate-200"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-menu"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}

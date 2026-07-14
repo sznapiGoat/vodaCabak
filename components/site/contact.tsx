@@ -112,31 +112,44 @@ export function Contact() {
               </div>
             </div>
 
-            {/* Right: map-style location panel */}
-            <div className="relative min-h-[320px] border-t border-edge lg:border-l lg:border-t-0">
-              <img
-                src="https://picsum.photos/seed/vsetin-czech-town-map-aerial/900/900"
-                alt="Vsetín a okolí"
-                className="absolute inset-0 h-full w-full object-cover opacity-40"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-base via-base/50 to-transparent" />
-              <div className="absolute inset-0 bg-grid opacity-40" />
+            {/* Right: stylized service-radius panel (self-contained, no external map) */}
+            <div className="relative min-h-[320px] overflow-hidden border-t border-edge lg:border-l lg:border-t-0">
+              <div className="absolute inset-0 bg-gradient-to-br from-water/[0.06] via-transparent to-heat/[0.05]" />
+              <div className="absolute inset-0 bg-grid opacity-50" />
+
+              {/* concentric range rings around the pin */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                {[120, 220, 320].map((size) => (
+                  <span
+                    key={size}
+                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-water/15"
+                    style={{ width: size, height: size }}
+                  />
+                ))}
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[10px] uppercase tracking-widest text-slate-600 [transform:translate(-50%,-50%)_translateY(-172px)]">
+                  do 30 km
+                </span>
                 <span className="relative flex h-5 w-5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-water opacity-60" />
-                  <span className="relative inline-flex h-5 w-5 items-center justify-center rounded-full bg-water text-base">
+                  <span className="relative inline-flex h-5 w-5 items-center justify-center rounded-full bg-water text-zinc-950">
                     <MapPin className="h-3 w-3" />
                   </span>
                 </span>
               </div>
-              <div className="absolute bottom-5 left-5 rounded-lg border border-edge bg-base/80 px-4 py-3 backdrop-blur-md">
+
+              <a
+                href="https://maps.google.com/?q=Horní+Jasenka+175+Vsetín"
+                target="_blank"
+                rel="noreferrer"
+                className="absolute bottom-5 left-5 rounded-lg border border-edge bg-base/80 px-4 py-3 backdrop-blur-md transition-colors hover:border-water/50"
+              >
                 <p className="font-display text-sm font-semibold text-white">
                   Horní Jasenka, Vsetín
                 </p>
                 <p className="text-xs text-slate-400">
-                  Dojezd po celé Vsetínsko a okolí
+                  Dojezd po celém Vsetínsku a okolí · otevřít mapu
                 </p>
-              </div>
+              </a>
             </div>
           </div>
         </div>

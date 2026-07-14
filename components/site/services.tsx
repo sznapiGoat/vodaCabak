@@ -185,8 +185,8 @@ export function Services() {
             Dvě řemesla, jeden spolehlivý parťák
           </h2>
           <p className="mt-4 text-slate-400">
-            Voda v odstínu cyan, topení v odstínu oranžové. Najeďte na kartu a
-            uvidíte, čím se zabývám nejvíc.
+            Od páteřních rozvodů po výměnu baterie. Každý spoj lisuji a
+            tlakuji, každou zakázku předávám uklizenou a se zárukou.
           </p>
         </div>
 

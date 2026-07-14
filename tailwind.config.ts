@@ -20,7 +20,7 @@ const config: Config = {
         "glow-water":
           "0 0 0 1px rgba(34,211,238,.25), 0 0 40px -8px rgba(6,182,212,.55)",
         "glow-heat":
-          "0 0 0 1px rgba(251,146,60,.25), 0 0 40px -8px rgba(249,115,16,.55)",
+          "0 0 0 1px rgba(251,146,60,.25), 0 0 40px -8px rgba(249,115,22,.55)",
         "inset-edge": "inset 0 1px 0 rgba(255,255,255,.06)",
       },
       borderRadius: {

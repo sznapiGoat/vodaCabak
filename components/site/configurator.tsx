@@ -105,7 +105,7 @@ export function Configurator() {
                       i < step
                         ? "border-water/50 bg-water/10 text-water"
                         : i === step
-                        ? "border-water bg-water text-base"
+                        ? "border-water bg-water text-zinc-950"
                         : "border-edge"
                     )}
                   >
@@ -176,7 +176,12 @@ export function Configurator() {
                   )}
 
                   {step === 2 && (
-                    <div>
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        if (form.name && form.phone) submit();
+                      }}
+                    >
                       <h3 className="mb-5 font-display text-lg font-semibold text-white">
                         Kam se vám mám ozvat?
                       </h3>
@@ -185,6 +190,7 @@ export function Configurator() {
                           <Label htmlFor="name">Jméno</Label>
                           <Input
                             id="name"
+                            autoComplete="name"
                             placeholder="Jan Novák"
                             value={form.name}
                             onChange={(e) =>
@@ -197,6 +203,7 @@ export function Configurator() {
                           <Input
                             id="phone"
                             type="tel"
+                            autoComplete="tel"
                             placeholder="+420 …"
                             value={form.phone}
                             onChange={(e) =>
@@ -216,7 +223,7 @@ export function Configurator() {
                           />
                         </div>
                       </div>
-                    </div>
+                    </form>
                   )}
                 </motion.div>
               </AnimatePresence>

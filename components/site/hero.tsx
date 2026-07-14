@@ -107,6 +107,8 @@ export function Hero() {
             <img
               src="/realizace/nemocnice-1.jpeg"
               alt="Reálná zakázka: výměna degradovaného potrubí ve Vsetínské nemocnici"
+              fetchPriority="high"
+              decoding="async"
               className="h-[420px] w-full object-cover md:h-[560px]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-base via-base/20 to-transparent" />

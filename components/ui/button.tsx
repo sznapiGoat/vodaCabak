@@ -9,9 +9,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         water:
-          "bg-water text-base font-semibold hover:bg-water-soft shadow-glow-water hover:shadow-[0_0_50px_-6px_rgba(6,182,212,.75)]",
+          "bg-water text-zinc-950 font-semibold hover:bg-water-soft shadow-glow-water hover:shadow-[0_0_50px_-6px_rgba(6,182,212,.75)]",
         heat:
-          "bg-heat text-base font-semibold hover:bg-heat-soft shadow-glow-heat hover:shadow-[0_0_50px_-6px_rgba(249,115,22,.75)]",
+          "bg-heat text-zinc-950 font-semibold hover:bg-heat-soft shadow-glow-heat hover:shadow-[0_0_50px_-6px_rgba(249,115,22,.75)]",
         outline:
           "border border-edge bg-white/[0.02] text-slate-100 hover:border-water/50 hover:bg-white/[0.04]",
         ghost: "text-slate-300 hover:text-white hover:bg-white/5",

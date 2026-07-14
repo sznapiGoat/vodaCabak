@@ -10,7 +10,13 @@ import { Footer } from "@/components/site/footer";
 
 export default function Home() {
   return (
-    <main className="relative min-h-[100dvh] overflow-x-clip">
+    <main id="obsah" className="relative min-h-[100dvh] overflow-x-clip">
+      <a
+        href="#sluzby"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-water focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-zinc-950"
+      >
+        Přeskočit na obsah
+      </a>
       <Navbar />
       <Hero />
       <Services />

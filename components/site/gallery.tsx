@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ZoomIn, BadgeCheck } from "lucide-react";
+import { ZoomIn, BadgeCheck, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -77,8 +77,27 @@ const PROJECTS: Project[] = [
   },
 ];
 
+const ALL_PHOTOS: Photo[] = PROJECTS.flatMap((p) => p.photos);
+
 export function Gallery() {
-  const [active, setActive] = useState<Photo | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const active = activeIndex === null ? null : ALL_PHOTOS[activeIndex];
+
+  const shift = useCallback((dir: 1 | -1) => {
+    setActiveIndex((i) =>
+      i === null ? i : (i + dir + ALL_PHOTOS.length) % ALL_PHOTOS.length
+    );
+  }, []);
+
+  useEffect(() => {
+    if (activeIndex === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") shift(-1);
+      if (e.key === "ArrowRight") shift(1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [activeIndex, shift]);
 
   return (
     <section id="galerie" className="relative py-24 lg:py-32">
@@ -126,7 +145,11 @@ export function Gallery() {
                   <motion.button
                     key={photo.src}
                     type="button"
-                    onClick={() => setActive(photo)}
+                    onClick={() =>
+                      setActiveIndex(
+                        ALL_PHOTOS.findIndex((p) => p.src === photo.src)
+                      )
+                    }
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
@@ -171,20 +194,42 @@ export function Gallery() {
         </div>
       </div>
 
-      <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
+      <Dialog
+        open={!!active}
+        onOpenChange={(o) => !o && setActiveIndex(null)}
+      >
         <DialogContent className="max-w-3xl p-3">
           <DialogTitle className="sr-only">
             {active?.caption ?? "Fotografie zakázky"}
           </DialogTitle>
           {active && (
-            <div className="overflow-hidden rounded-lg">
+            <div className="relative overflow-hidden rounded-lg">
               <img
                 src={active.src}
                 alt={active.caption}
                 className="max-h-[78vh] w-full object-contain"
               />
+              <button
+                type="button"
+                aria-label="Předchozí fotka"
+                onClick={() => shift(-1)}
+                className="absolute left-2 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-base/70 text-white backdrop-blur-md transition-colors hover:border-water/60"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                aria-label="Další fotka"
+                onClick={() => shift(1)}
+                className="absolute right-2 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-base/70 text-white backdrop-blur-md transition-colors hover:border-water/60"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
               <p className="px-1 pb-1 pt-3 text-center text-sm text-slate-400">
                 {active.caption}
+                <span className="ml-2 text-slate-600">
+                  {(activeIndex ?? 0) + 1} / {ALL_PHOTOS.length}
+                </span>
               </p>
             </div>
           )}
